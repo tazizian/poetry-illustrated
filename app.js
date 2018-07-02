@@ -5,7 +5,7 @@ function build_menu(text) {
   links = []
 
   for (line of lines) {
-    links.push('<a href="' + encodeURI(line) + '">' + line + '</a><br>')
+    links.push('<a class="animated fadeIn" href="' + encodeURI(line) + '">' + line + '</a><br>')
   }
 
   return links.join('')
@@ -78,7 +78,7 @@ function goto_menu() {
 }
 
 function render_title(bit) {
-  return '<div class="title">' + escapeHtml(bit.replace(/#/g, '')) + '</div>'
+  return '<div class="animated fadeIn title">' + escapeHtml(bit.replace(/#/g, '')) + '</div>'
 }
 
 function render_credit(bit) {
@@ -86,16 +86,16 @@ function render_credit(bit) {
   let output = []
   for (let line of lines) {
     line = line.replace(/>>/g, '')
-    output.push('<span>' + escapeHtml(line) + '</span>')
+    output.push('<span class="animated fadeIn">' + escapeHtml(line) + '</span>')
   }
-  return '<div class="credits">' + output.join('<br>') + '</div>'
+  return '<div class="animated fadeIn credits">' + output.join('<br>') + '</div>'
 }
 
 function render_part(bit) {
   let lines = bit.trim().split(/\s*\n\s*/)
   let output = []
   for (let line of lines) {
-    output.push('<span>' + escapeHtml(line) + '</span>')
+    output.push('<span class="animated fadeIn">' + escapeHtml(line) + '</span>')
   }
   return '<div class="stanza">' + output.join('<br>') + '</div>'
 }
@@ -113,7 +113,7 @@ function render_section_end() {
   return '</div>'
 }
 function render_back_button() {
-  return '<a class="back-button" href="#">Back to menu</a><br>'
+  return '<a class="animated fadeIn back-button" href="#">Back to menu</a><br>'
 }
 
 // Function: parse_sections
