@@ -1,0 +1,77 @@
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Mono', serif;
+  height: 100%;
+}
+
+/* hidden by default */
+#stage, #mainmenu {
+  display:none;
+}
+
+#mainmenu .poetry .section, #mainmenu .poetry, #mainmenu {
+  min-height: 100vh;
+}
+
+.poetry .section {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.poetry .section + .section {
+  margin-top: 0.1em;
+}
+
+.poetry .stanza, .poetry .title {
+  padding: 3rem 0;
+}
+
+.poetry .title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+.poetry .credits {
+  font-size: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.poetry .stanza span, .poetry .title, .poetry .credits span, .poetry .back-button, .poetry .stanza a {
+  border-radius: 0 0.2rem 0.2rem 0;
+  background-color: white;
+  padding: 0.5rem 0.75rem 0.4rem;
+  margin-bottom: 0.2rem;
+  display: inline-block;
+}

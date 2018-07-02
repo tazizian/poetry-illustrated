@@ -1,0 +1,34 @@
+PURPOSE: A website for easy, clear, good looking poetry compilations (for myshka)
+
+MECHANISM:
+
+Person creates a folder structure like this:
+- post.txt
+- images/
+
+Format of post.txt looks like
+
+---
+
+background-1.jpg|.png|.jpeg
+
+# Heading
+## Subheading
+
+I wandered lonely as a cloud
+The second line looks like this.
+
+The second paragraph looks like this.
+And the poem flows on like this
+
+background-2.jpg
+
+Syntax looks like this
+*bold* gives me bold
+_italic_ gives me italic
+
+>> by the Author >> edited by Editor >> (c) Copyright Holder 2018
+
+---
+
+Any images that are in the current folder can be used as backdrops
