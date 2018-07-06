@@ -116,7 +116,7 @@ function render_section_end() {
   return '</div>'
 }
 function render_back_button() {
-  return '<a class="animated fadeIn back-button" href="#">Back to menu</a><br>'
+  return '<a class="animated fadeIn back-button" href="#">&lt; Back</a><br>'
 }
 
 // Function: parse_sections

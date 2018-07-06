@@ -30,6 +30,8 @@ html, body {
   padding: 0;
   font-family: 'Roboto Mono', serif;
   height: 100%;
+  /* Stops safari from resizing text */
+  -webkit-text-size-adjust: none;
 }
 
 /* hidden by default */
@@ -53,14 +55,15 @@ html, body {
   margin-top: 0.1em;
 }
 
-.poetry .stanza, .poetry .title {
-  padding: 3rem 0;
+.poetry .stanza {
+  padding: 1.2rem 0;
 }
 
 .poetry .title {
   font-size: 2rem;
   font-weight: bold;
-  margin-top: 3rem;
+  margin-top: 2.4rem;
+  margin-bottom: 2rem;
 }
 
 .poetry .credits {
@@ -68,10 +71,38 @@ html, body {
   padding-bottom: 1rem;
 }
 
+.poetry .stanza + .credits {
+  padding-top: 3rem;
+}
+
+.poetry .section {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+  box-sizing: border-box;
+}
+
+.poetry .back-button {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.poetry .stanza a:hover, .poetry .back-button:hover {
+  background-color: #71dde3;
+}
+
+.poetry .stanza span:hover, .poetry .title:hover, .poetry .credits span:hover {
+  background-color: #e0ffff;
+
+}
+
+
+.poetry .stanza span, .poetry .credits span, .poetry .back-button, .poetry .stanza a {
+  margin-bottom: 0.2rem;
+}
+
 .poetry .stanza span, .poetry .title, .poetry .credits span, .poetry .back-button, .poetry .stanza a {
   border-radius: 0 0.2rem 0.2rem 0;
   background-color: white;
   padding: 0.5rem 0.75rem 0.4rem;
-  margin-bottom: 0.2rem;
   display: inline-block;
 }
