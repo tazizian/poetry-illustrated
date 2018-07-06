@@ -1,10 +1,11 @@
 
 function build_menu(text) {
-  let lines = text.trim().split(/\s*\n\s*/)
+  var lines = text.trim().split(/\s*\n\s*/)
 
   links = []
 
-  for (line of lines) {
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i];
     links.push('<a class="animated fadeIn" href="' + encodeURI(line) + '">' + line + '</a><br>')
   }
 
@@ -27,10 +28,11 @@ function load_menu() {
 }
 
 function hook_menu_links() {
-  let links = document.getElementById('mainmenucontent').getElementsByTagName('a')
-  for (link of links) {
+  var links = document.getElementById('mainmenucontent').getElementsByTagName('a')
+  for (var i = 0; i < links.length; i++) {
+    var link = links[i]
     link.addEventListener('click', function(e) {
-      let name = decodeURI(e.target.getAttribute('href'))
+      var name = decodeURI(e.target.getAttribute('href'))
       save_location(name)
       load_poem(name)
       e.preventDefault()
@@ -40,8 +42,9 @@ function hook_menu_links() {
 }
 
 function hook_back_links() {
-  let links = document.getElementById('stage').getElementsByClassName('back-button')
-  for (link of links) {
+  var links = document.getElementById('stage').getElementsByClassName('back-button')
+  for (var i = 0; i < links.length; i++) {
+    var link = links[i]
     link.addEventListener('click', function(e) {
       window.location.hash = ""
       goto_menu(name)
@@ -52,7 +55,7 @@ function hook_back_links() {
 }
 
 function load_poem(name) {
-  let base_url = 'poetry/' + name
+  var base_url = 'poetry/' + name
   fetch(base_url + '/poem.txt?t=' + Math.floor(Date.now() / 1000)).then(function(response) {
     if (response.ok == true) {
       response.text().then(function (text) {
@@ -67,7 +70,6 @@ function load_poem(name) {
 }
 
 function goto_poem() {
-  console.log(document.getElementById('mainmenu'))
   document.getElementById('mainmenu').style.display = 'none';
   document.getElementById('stage').style.display = 'block';
 }
@@ -82,26 +84,27 @@ function render_title(bit) {
 }
 
 function render_credit(bit) {
-  let lines = bit.trim().split(/\s*\n\s*/)
-  let output = []
-  for (let line of lines) {
-    line = line.replace(/>>/g, '')
+  var lines = bit.trim().split(/\s*\n\s*/)
+  var output = []
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].replace(/>>/g, '')
     output.push('<span class="animated fadeIn">' + escapeHtml(line) + '</span>')
   }
   return '<div class="animated fadeIn credits">' + output.join('<br>') + '</div>'
 }
 
 function render_part(bit) {
-  let lines = bit.trim().split(/\s*\n\s*/)
-  let output = []
-  for (let line of lines) {
+  var lines = bit.trim().split(/\s*\n\s*/)
+  var output = []
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i]
     output.push('<span class="animated fadeIn">' + escapeHtml(line) + '</span>')
   }
   return '<div class="stanza">' + output.join('<br>') + '</div>'
 }
 
 function render_section_start(bit) {
-  let tag = '<div class="section"'
+  var tag = '<div class="section"'
   if (bit) {
     tag += ' style="background-image:url(\'' + encodeURI(bit) + '\')">'
   } else {
@@ -120,13 +123,14 @@ function render_back_button() {
 // changes poem text into a json structure
 function build_poem(text, base_url) {
   // firstly split into sections after getting rid of whitespace at start and end
-  let sections = text.trim().split(/\s*\n(?:\s*\n)+\s*/)
+  var sections = text.trim().split(/\s*\n(?:\s*\n)+\s*/)
   // create a structure
-  let structure = []
+  var structure = []
   // keep track of whether a section has been opened
-  let section_open = false
+  var section_open = false
   // parse each of the sections
-  for (let bit of sections) {
+  for (var i = 0; i < sections.length; i++) {
+    var bit = sections[i]
     if (is_style(bit)) {
       // ignore for now
       continue
@@ -206,7 +210,6 @@ function load_location(location) {
   } else {
     name = hash.substring(1)
     name = name.replace(/---/g, "===").replace(/-/g, " ").replace(/===/g, "-")
-    console.log(name)
     load_poem(name)
   }
 }
@@ -215,8 +218,17 @@ window.onpopstate = function(e) {
   load_location(document.location)
 };
 
-document.addEventListener('DOMContentLoaded', function(){
+// http://youmightnotneedjquery.com/
+function ready(fn) {
+  if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn, false);
+  }
+}
+
+ready(function() {
   //load_poem('One Step Closer')
   history.pushState(null, null, document.location.hash)
   load_location(document.location)
-}, false);
+});
