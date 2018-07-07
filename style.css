@@ -86,7 +86,7 @@ html, body {
   margin-bottom: 1.2rem;
 }
 
-.poetry .stanza a:hover, .poetry .back-button:hover {
+.poetry .stanza a:hover, .poetry .back-button:hover, .poetry a.credits span:hover {
   background-color: #71dde3;
 }
 
@@ -95,6 +95,14 @@ html, body {
 
 }
 
+.poetry .inline.credits {
+  display: inline-block;
+}
+
+.poetry .credits img {
+  height: 1em;
+  vertical-align: baseline;
+}
 
 .poetry .stanza span, .poetry .credits span, .poetry .back-button, .poetry .stanza a {
   margin-bottom: 0.2rem;
