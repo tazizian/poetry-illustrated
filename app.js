@@ -90,6 +90,10 @@ function render_title(bit) {
   return '<div class="animated fadeIn title">' + escapeHtml(bit.replace(/#/g, '')) + '</div>'
 }
 
+function render_dedication(bit) {
+  return '<div class="animated fadeIn dedication">' + escapeHtml(bit.replace(/_/g, '')) + '</div>'
+}
+
 function render_credit(bit) {
   var lines = bit.trim().split(/\s*\n\s*/)
   var output = []
@@ -162,6 +166,8 @@ function build_poem(text, base_url) {
         structure.push(render_title(bit))
       } else if (is_credit(bit)) {
         structure.push(render_credit(bit))
+      } else if (is_dedication(bit)) {
+        structure.push(render_dedication(bit))
       } else {
         structure.push(render_part(bit))
       }
@@ -185,6 +191,10 @@ function is_section(bit) {
 
 function is_title(bit) {
   return bit.startsWith('#')
+}
+
+function is_dedication(bit) {
+  return bit.startsWith('_')
 }
 
 function is_credit(bit) {
