@@ -66,6 +66,19 @@ html, body {
   margin-bottom: 2rem;
 }
 
+.poetry .subtitle {
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  margin-top: -2.4rem;
+}
+
+.poetry .dedication {
+  font-style: italic;
+  margin-top: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
 .poetry .credits {
   font-size: 0.75rem;
   padding-bottom: 1rem;
@@ -91,7 +104,7 @@ html, body {
 }
 
 .poetry .stanza span:hover, .poetry .title:hover, .poetry .credits span:hover {
-  background-color: #e0ffff;
+  background-color: #ecf0f1;
 
 }
 
@@ -108,7 +121,8 @@ html, body {
   margin-bottom: 0.2rem;
 }
 
-.poetry .stanza span, .poetry .title, .poetry .credits span, .poetry .back-button, .poetry .stanza a {
+.poetry .stanza span, .poetry .title, .poetry .credits span, .poetry .back-button,
+.poetry .stanza a, .poetry .dedication, .poetry .subtitle {
   border-radius: 0 0.2rem 0.2rem 0;
   background-color: white;
   padding: 0.5rem 0.75rem 0.4rem;
