@@ -6,7 +6,14 @@ function build_menu(text) {
 
   for (var i = 0; i < lines.length; i++) {
     var line = lines[i];
-    links.push('<a class="animated fadeIn" href="' + encodeURI(line) + '">' + line + '</a><br>')
+    if (line.startsWith('*')) {
+      // new entry
+      line = line.substr(1);
+      text = line + '<i class="new">NEW</i>'
+    } else {
+      text = line;
+    }
+    links.push('<a class="animated fadeIn" href="' + encodeURI(line) + '">' + text + '</a><br>')
   }
 
   return links.join('')

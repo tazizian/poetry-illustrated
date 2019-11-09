@@ -39,6 +39,17 @@ html, body {
   display:none;
 }
 
+#mainmenu .new {
+  background-color: #2980b9;
+  color: white;
+  font-size: 0.5rem;
+  border-radius: 0.25rem;
+  font-style: normal;
+  padding: 0.15rem 0.25rem;
+  vertical-align: middle;
+  margin: 0rem 0rem 0.3rem 0.45rem;
+}
+
 #mainmenu .poetry .section, #mainmenu .poetry, #mainmenu {
   min-height: 100vh;
 }
