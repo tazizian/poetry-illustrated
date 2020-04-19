@@ -1,3 +1,5 @@
+images/01.mp4
+
 # A New Day Rises
 
 With rays glowing gold
