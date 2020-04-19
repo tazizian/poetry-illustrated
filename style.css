@@ -62,10 +62,6 @@ html, body {
   min-height: 100vh;
 }
 
-.poetry .section + .section {
-  margin-top: 0.1em;
-}
-
 .poetry .stanza {
   padding: 1.2rem 0;
 }
@@ -103,6 +99,17 @@ html, body {
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
   box-sizing: border-box;
+  overflow: hidden;
+  border-bottom: 0.2em solid white;
+}
+
+.poetry .section .video-bg {
+  min-height: 100%;
+  position: fixed;
+  min-width: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
 }
 
 .poetry .back-button {

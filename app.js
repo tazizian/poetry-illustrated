@@ -115,11 +115,17 @@ function render_part(bit) {
 }
 
 function render_section_start(bit) {
+  var isVideo = bit.match(/\.(?:mp4)/i)
   var tag = '<div class="section"'
-  if (bit) {
+  if (bit && !isVideo) {
     tag += ' style="background-image:url(\'' + encodeURI(bit) + '\')">'
   } else {
     tag += '>'
+  }
+  if (isVideo) {
+    tag += '<video autoplay muted loop class="video-bg">\n'
+    tag += '<source src="' + bit + '" type="video/mp4">'
+    tag += '</video>'
   }
   return tag
 }
@@ -186,7 +192,7 @@ function is_style(bit) {
 }
 
 function is_section(bit) {
-  return bit.match(/\.(?:jpg|jpeg|png|gif)/i)
+  return bit.match(/\.(?:jpg|jpeg|png|gif|mp4)/i)
 }
 
 function is_title(bit) {
