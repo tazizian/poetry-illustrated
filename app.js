@@ -1,4 +1,8 @@
 
+var SITE_TITLE = 'Poetry Illustrated'
+var SITE_DESCRIPTION = 'A collection of poetry and photography'
+var SITE_AUTHOR = 'Tamara Azizian'
+
 function build_menu(text) {
   var lines = text.trim().split(/\s*\n\s*/)
 
@@ -13,7 +17,7 @@ function build_menu(text) {
     } else {
       text = line;
     }
-    links.push('<a class="animated fadeIn" href="' + encodeURI(line) + '">' + text + '</a><br>')
+    links.push('<a class="animated fadeIn" href="' + encodeURI(line) + '">&gt;&gt; ' + text + '</a><br>')
   }
 
   return links.join('')
@@ -26,7 +30,9 @@ function load_menu() {
         var menu_html = build_menu(text)
         save_location("")
         document.getElementById('mainmenucontent').innerHTML = menu_html
-        document.title = "Poetry Illustrated"
+        document.title = SITE_TITLE
+        set_facebook_title(SITE_TITLE + ' - ' + SITE_DESCRIPTION + ' by ' + SITE_AUTHOR)
+        set_facebook_image('menu-background.jpg')
         hook_menu_links()
         goto_menu()
       })
@@ -67,8 +73,10 @@ function load_poem(name) {
     if (response.ok == true) {
       response.text().then(function (text) {
         var poem_html = build_poem(text, base_url)
-        document.title = "Poetry Illustrated - " + name
+        document.title = SITE_TITLE + " - " + name
         document.getElementById('stage').innerHTML = poem_html
+        set_facebook_title(name + ' by ' + SITE_AUTHOR)
+        set_facebook_image(base_url + '/images/01.jpg')
         hook_back_links()
         goto_poem()
       })
@@ -115,14 +123,14 @@ function render_part(bit) {
 }
 
 function render_section_start(bit) {
-  var isVideo = bit.match(/\.(?:mp4)/i)
+  var is_video = bit.match(/\.(?:mp4)/i)
   var tag = '<div class="section"'
-  if (bit && !isVideo) {
+  if (bit && !is_video) {
     tag += ' style="background-image:url(\'' + encodeURI(bit) + '\')">'
   } else {
     tag += '>'
   }
-  if (isVideo) {
+  if (is_video) {
     tag += '<video autoplay muted loop class="video-bg">\n'
     tag += '<source src="' + bit + '" type="video/mp4">'
     tag += '</video>'
@@ -134,6 +142,14 @@ function render_section_end() {
 }
 function render_back_button() {
   return '<a class="animated fadeIn back-button" href="#">&lt; Back</a><br>'
+}
+
+function set_facebook_image(url) {
+  document.getElementById('fb-meta-background').setAttribute('content', url)
+}
+
+function set_facebook_title(title) {
+  document.getElementById('fb-meta-title').setAttribute('content', title)
 }
 
 // Function: parse_sections
